@@ -1,0 +1,16 @@
+{
+  "name": "portfoliosite",
+  "version": "1.0.0",
+  "description": "Site developed using the MERN stack with a RESTful API for displaying portfolio projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
