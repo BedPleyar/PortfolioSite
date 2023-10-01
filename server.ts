@@ -12,10 +12,7 @@ app.get('/', (req: any, res: any) => {
     res.send("Hello Node API");
 });
 
-app.listen(PORT, () => {
-    console.log(`Node API app is running on ${PORT}`);
 
-});
 
 mongoose.connect('mongodb+srv://admin:Supergreatpassword1%21@pdrahelper.joeldgn.mongodb.net/Portfolio?retryWrites=true&w=majority',)
 .then(() => {
