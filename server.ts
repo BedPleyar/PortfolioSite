@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 const app = express();
 
 // routes
-app.get('/', (req, res) => {
+app.get('/', (req: any, res: any) => {
     res.send("Hello Node API");
 });
 
@@ -20,6 +20,10 @@ app.listen(PORT, () => {
 mongoose.connect('mongodb+srv://admin:Supergreatpassword1%21@pdrahelper.joeldgn.mongodb.net/Portfolio?retryWrites=true&w=majority',)
 .then(() => {
     console.log("Connected to MongoDB");
-}).catch((error) =>
+    app.listen(PORT, () => {
+        console.log(`Node API app is running on ${PORT}`);
+    
+    });
+}).catch((error: any) =>
     console.log(error)
 );
