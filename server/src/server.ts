@@ -2,11 +2,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 console.log('Hello');
 
-const PORT = 3000;
+const PORT = 4000;
 const app = express();
 
 // routes
-app.get('/', (req: any, res: any) => {
+app.get('/test', (req: any, res: any) => {
   res.send('Hello Node API');
 });
 
