@@ -6,7 +6,7 @@ const PORT = 4000;
 const app = express();
 
 // routes
-app.get('/test', (req: any, res: any) => {
+app.get('/', (req: any, res: any) => {
   res.send('Hello Node API');
 });
 

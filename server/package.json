@@ -8,7 +8,7 @@
     "preserve": "npm run build",
     "serve": "node dist/server.js",
     "predev": "npm run build",
-    "dev": "nodemon dist/server.js",
+    "dev": "nodemon .\\src\\server.ts",
     "format": "npx prettier --write .",
     "build": "tsc --build src/"
   },
