@@ -2,7 +2,8 @@ import Grid from '@mui/material/Unstable_Grid2';
 import Paper from '@mui/material/Paper';
 import "../App.css"
 import { useQuery } from '@tanstack/react-query';
-import { Typography } from '@mui/material';
+import { Typography, createTheme } from '@mui/material';
+import { ThemeProvider } from '@emotion/react';
 
 async function fetchProjects() {
     const res = await fetch("/project")
@@ -21,21 +22,40 @@ function ProjectDisplay() {
         )
     }
 
+    const theme = createTheme();
+
+    theme.typography.body2 = {
+    fontSize: '1rem'
+    };
+
     return (
-        <Grid container spacing={2}>
-            <Grid xs={12} sm={6} md={6} lg={3}>
-            <Paper elevation={6} >xs=6 md=8</Paper>
-            </Grid>
-            <Grid xs={12} sm={6} md={6} lg={3}>
-            <Paper elevation={6} >xs=6 md=4</Paper>
-            </Grid>
-            <Grid xs={12} sm={6} md={6} lg={3}>
-            <Paper elevation={6} >xs=6 md=4</Paper>
-            </Grid>
-            <Grid xs={12} sm={6} md={6} lg={3}>
-            <Paper elevation={6} >xs=6 md=8</Paper>
-            </Grid>
-        </Grid>
+        <div>
+            <div>
+ 
+                <Grid container spacing={2}>
+                {projects?.map((project: any) => {
+                    return (
+                        <Grid xs={12} sm={6} md={6} lg={3}>
+                            <Paper elevation={6}>
+                                <Typography variant='h6' textAlign={"center"}>
+                                    {project.title}
+                                </Typography>
+                                <br/>
+                                <Typography marginLeft={"10px"} marginRight={"10px"} fontSize={"1rem"} variant='body2'>
+                                    {project.description}
+                                </Typography>
+                                <br/>
+                                <Typography marginLeft={"10px"} marginRight={"10px"} fontSize={"1rem"} variant='body2'>
+                                    <Typography fontStyle={"italic"}>Keywords:</Typography>
+                                    {project.keywords.join(" ")}
+                                </Typography>
+                                <br/>
+                            </Paper>
+                        </Grid>
+                )})}
+                </Grid>
+            </div>
+        </div>
     )
 }
 
