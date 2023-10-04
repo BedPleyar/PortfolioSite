@@ -1,4 +1,5 @@
 import Typography from '@mui/material/Typography';
+import ProjectDisplay from './ProjectDisplay';
 
 function HomePage() {   
     return (
@@ -22,7 +23,7 @@ function HomePage() {
                 </div>     
                 <div>
                     {/*TODO: Add grid of projects pulled from API*/}
-
+                    <ProjectDisplay />
                 </div>
             </div>     
 
