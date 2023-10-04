@@ -1,8 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Route, Switch } from "react-router-dom";
-import HomePage from "./HomePage";
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Container, Stack, Typography } from "@mui/material";
 
 function NavBar() {
     return (
@@ -10,17 +8,21 @@ function NavBar() {
         <Stack direction={"row"} spacing={2}>
             <Container>
                 <Typography variant="h6" align="center">
-                    First Container
+                    <Link to="/">
+                    Home
+                    </Link>
                 </Typography>
             </Container>
             <Container>
                 <Typography variant="h6" align="center">
-                    Second Container
+                    <Link to="/about">
+                    About Me
+                    </Link>
                 </Typography>
             </Container>
             <Container>
                 <Typography variant="h6" align="center">
-                    Third Container
+                    <a href="https://github.com/BedPleyar">Github</a>
                 </Typography>
             </Container>
         </Stack>

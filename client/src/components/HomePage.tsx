@@ -1,7 +1,5 @@
 import React from "react";
 import Typography from '@mui/material/Typography';
-import { Container, Stack } from "@mui/material";
-import NavBar from "./NavBar";
 
 function HomePage() {   
     return (
@@ -16,9 +14,6 @@ function HomePage() {
                     <br/> For further information and ways to reach out to myself please consult the "About Me" page.
                 </Typography>   
             </div>       
-            <div style={{position: "fixed", bottom: "0", width: "100%"}}>
-                <NavBar />
-            </div>
         </div>
         
         

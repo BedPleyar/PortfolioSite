@@ -33,7 +33,10 @@ function App() {
             <Route exact path='/admin'>
               <Admin />
             </Route>
-          </Switch> 
+          </Switch>
+          <div style={{position: "fixed", bottom: "0", width: "100%"}}>
+                <NavBar />
+          </div> 
         </Router>
       </div>
     </ThemeProvider>
