@@ -22,6 +22,7 @@ function HomePage() {
                 </div>     
                 <div>
                     {/*TODO: Add grid of projects pulled from API*/}
+
                 </div>
             </div>     
 

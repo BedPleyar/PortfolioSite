@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import NavBar from './components/NavBar';
 import AboutMe from './components/AboutMe';
 import Admin from './components/AdminPage';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 
 const darkTheme = createTheme({
@@ -13,11 +14,14 @@ const darkTheme = createTheme({
   }
 })
 
+const queryClient = new QueryClient()
+
 function App() {
 
   return (
     <ThemeProvider theme = {darkTheme}>
       <CssBaseline />
+      <QueryClientProvider client={queryClient}>
       <div>
         <Router>
           <Switch>
@@ -36,6 +40,7 @@ function App() {
           </div> 
         </Router>
       </div>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
