@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 
 function HomePage() {   
     return (
-        <div>
+        <div className="body">
             <div>
                 <div style={{marginBottom : "50px"}}>
                 <Typography variant="h2">
