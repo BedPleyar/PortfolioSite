@@ -1,6 +1,6 @@
-import React from "react";
+
 import '../App.css';
-import { Container, Stack, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 function AboutMe() {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BottomNavigation, BottomNavigationAction, Container, Stack, Typography } from "@mui/material";
+import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 import HomeIcon from '@mui/icons-material/Home';
 import PersonIcon from '@mui/icons-material/Person';
 import GitHubIcon from '@mui/icons-material/GitHub';

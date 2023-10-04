@@ -1,5 +1,3 @@
-import React from 'react';
-import logo from './logo.svg';
 import HomePage from './components/HomePage'
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles/';
