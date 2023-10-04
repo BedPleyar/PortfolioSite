@@ -12,7 +12,7 @@ import Admin from './components/AdminPage';
 const darkTheme = createTheme({
   palette: {
     mode: 'dark',
-  },
+  }
 })
 
 function App() {
