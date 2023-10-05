@@ -2,7 +2,7 @@ import { Button, TextField, Typography } from "@mui/material"
 import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 
-async function deleteProjectByID(id : any) {
+async function deleteProjectByID(id : string) {
     const res = await fetch(`/project/${id}`, {method: 'DELETE'})
     if (!res.ok) {
         alert(`Error when deleting object with ID ${id}`)
@@ -45,7 +45,6 @@ function DeleteByID () {
             try {
                 await deleteProject(deleteID)
                 setDoDelete(true)
-                alert("reached")
             } catch (e) {
                 console.error(e)
             }

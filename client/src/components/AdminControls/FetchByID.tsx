@@ -3,7 +3,7 @@ import { Button, Grid, Paper, TextField, Typography } from "@mui/material"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 
-async function fetchProjectByID(id : any) {
+async function fetchProjectByID(id : string) {
     const res = await fetch(`/project/${id}`)
     if (!res.ok) {
         alert(`Error fetching project with ID ${id}`)
