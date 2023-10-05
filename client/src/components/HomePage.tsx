@@ -27,7 +27,6 @@ function HomePage() {
             </div>
             <div>
                 <div style={{margin: "35px", marginLeft: "25%", marginRight: "25%"}}>
-                    {/*TODO: Add grid of projects pulled from API*/}
                     <ProjectDisplay />
                 </div>
             </div>
