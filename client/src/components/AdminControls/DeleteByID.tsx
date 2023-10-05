@@ -3,7 +3,8 @@ import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 
 async function deleteProjectByID(id : any) {
-    return await fetch(`/project/${id}`, {method: 'DELETE'})
+    const res = await fetch(`/project/${id}`, {method: 'DELETE'})
+    return res.json()
 }
 
 function DeleteByID () {
@@ -13,9 +14,7 @@ function DeleteByID () {
     const [doDelete, setDoDelete] = useState(false)
 
     const {mutateAsync : deleteProject  } = useMutation({
-       mutationFn : async (deleteProj) => {
-        return await fetch(`/project/${deleteID}`, {method: 'DELETE'})
-       }
+       mutationFn : deleteProjectByID
     });
 
     return (
@@ -32,15 +31,16 @@ function DeleteByID () {
 
         
         <Button variant="contained" onClick={async () => {
-                try {
-                    await deleteProject()
-                } catch (e) {
-                    console.error(e)
-                }
-                console.log("Success")
+            try {
+                await deleteProject(deleteID)
+                setDoDelete(true)
+                alert("reached")
+            } catch (e) {
+                console.error(e)
+            }
         }}>Delete</Button> 
 
-        {doDelete ? <p>Successfully deleted</p> : <p></p>}
+        {doDelete ? <p>Successful delete</p> : <p></p>}
         </div>
     )
 }

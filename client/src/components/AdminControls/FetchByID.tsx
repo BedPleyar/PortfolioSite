@@ -5,6 +5,10 @@ import { useState } from "react"
 
 async function fetchProjectByID(id : any) {
     const res = await fetch(`/project/${id}`)
+    if (!res.ok) {
+        alert(`Error fetching project with ID ${id}`)
+        return res.text().then(text => {throw new Error(text)})
+    }
     return res.json()
 }
 
@@ -13,15 +17,15 @@ function FetchByID () {
     const [doFetch, setDoFetch] = useState(false)
 
 
-    const {data : project, isLoading, refetch} = useQuery({
+    const {data : project, isLoading, refetch, isError} = useQuery({
         queryFn: () => fetchProjectByID(fetchID),
         queryKey: ["project"],
-        enabled: false
+        enabled: false,
+        retry : false
     })
 
     const executeFetch = () => {
-        refetch()
-        setDoFetch(true)
+            refetch()
     }
 
     return (
@@ -38,6 +42,7 @@ function FetchByID () {
             />
 
             <Button variant="contained" onClick={(e) => {
+                setDoFetch(false)
                 executeFetch()
             }}>Fetch</Button> 
         </div>
@@ -47,16 +52,16 @@ function FetchByID () {
                 <Grid xs={12} sm={6} md={6} lg={3}>
                     <Paper elevation={6}>
                         <Typography variant='h6' textAlign={"center"}>
-                            {project.title}
+                            {project?.title}
                         </Typography>
                         <br/>
                         <Typography marginLeft={"10px"} marginRight={"10px"} fontSize={"1rem"} variant='body2'>
-                            {project.description}
+                            {project?.description}
                         </Typography>
                         <br/>
                         <Typography marginLeft={"10px"} marginRight={"10px"} fontSize={"1rem"} variant='body2'>
                             <Typography fontStyle={"italic"}>Keywords:</Typography>
-                            {project.keywords.join(" ")}
+                            {project?.keywords.join(" ")}
                         </Typography>
                         <br/>
                     </Paper>
