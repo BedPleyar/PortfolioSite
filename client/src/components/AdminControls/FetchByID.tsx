@@ -1,4 +1,5 @@
-import { Button, TextField, Typography } from "@mui/material"
+import { Margin } from "@mui/icons-material"
+import { Button, Grid, Paper, TextField, Typography } from "@mui/material"
 import { useQuery } from "@tanstack/react-query"
 import { useState } from "react"
 
@@ -12,7 +13,7 @@ function FetchByID () {
     const [doFetch, setDoFetch] = useState(false)
 
 
-    const {data : projects, isLoading, refetch} = useQuery({
+    const {data : project, isLoading, refetch} = useQuery({
         queryFn: () => fetchProjectByID(fetchID),
         queryKey: ["project"],
         enabled: false
@@ -37,10 +38,32 @@ function FetchByID () {
 
             <Button variant="contained" onClick={(e) => {
                 setDoFetch(true)
-                fetchProjectByID(fetchID)
+                executeFetch()
             }}>Fetch</Button> 
         </div>
-        {doFetch ? <p>fetch</p> : <p></p>}
+        {doFetch ?
+        <div style={{marginTop: "25px", marginBottom: "25px"}}>
+            <Grid container spacing={2}>
+                <Grid xs={12} sm={6} md={6} lg={3}>
+                    <Paper elevation={6}>
+                        <Typography variant='h6' textAlign={"center"}>
+                            {project.title}
+                        </Typography>
+                        <br/>
+                        <Typography marginLeft={"10px"} marginRight={"10px"} fontSize={"1rem"} variant='body2'>
+                            {project.description}
+                        </Typography>
+                        <br/>
+                        <Typography marginLeft={"10px"} marginRight={"10px"} fontSize={"1rem"} variant='body2'>
+                            <Typography fontStyle={"italic"}>Keywords:</Typography>
+                            {project.keywords.join(" ")}
+                        </Typography>
+                        <br/>
+                    </Paper>
+                </Grid>
+            </Grid>
+        </div>
+         : <p></p>}
     </div>
     
     )

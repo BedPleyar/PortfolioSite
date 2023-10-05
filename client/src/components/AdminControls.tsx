@@ -7,9 +7,6 @@ import DeleteByID from './AdminControls/DeleteByID';
 
 function AdminControls() {
 
-
-
-
     return (
         <div className='body'>
             <Typography variant="h4">Admin Controls</Typography>
