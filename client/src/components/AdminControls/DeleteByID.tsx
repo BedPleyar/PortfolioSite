@@ -1,13 +1,22 @@
 import { Button, TextField, Typography } from "@mui/material"
+import { useMutation } from "@tanstack/react-query"
 import { useState } from "react"
 
-
+async function deleteProjectByID(id : any) {
+    return await fetch(`/project/${id}`, {method: 'DELETE'})
+}
 
 function DeleteByID () {
     const [deleteID, setDeleteID] = useState("")
 
 
     const [doDelete, setDoDelete] = useState(false)
+
+    const {mutateAsync : deleteProject  } = useMutation({
+       mutationFn : async (deleteProj) => {
+        return await fetch(`/project/${deleteID}`, {method: 'DELETE'})
+       }
+    });
 
     return (
         <div>
@@ -22,11 +31,16 @@ function DeleteByID () {
         />
 
         
-        <Button variant="contained" onClick={() => {
-            setDoDelete(true)
+        <Button variant="contained" onClick={async () => {
+                try {
+                    await deleteProject()
+                } catch (e) {
+                    console.error(e)
+                }
+                console.log("Success")
         }}>Delete</Button> 
 
-        {doDelete ? <p>delete</p> : <p></p>}
+        {doDelete ? <p>Successfully deleted</p> : <p></p>}
         </div>
     )
 }

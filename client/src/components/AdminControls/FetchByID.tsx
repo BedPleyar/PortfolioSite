@@ -21,6 +21,7 @@ function FetchByID () {
 
     const executeFetch = () => {
         refetch()
+        setDoFetch(true)
     }
 
     return (
@@ -37,7 +38,6 @@ function FetchByID () {
             />
 
             <Button variant="contained" onClick={(e) => {
-                setDoFetch(true)
                 executeFetch()
             }}>Fetch</Button> 
         </div>
