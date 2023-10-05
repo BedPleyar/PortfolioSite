@@ -49,9 +49,10 @@ app.put("/project/:id", async (req: any, res: any) => {
     if (!project) {
       res.status(404).json({message : `Cannot find object with id ${id}`})
     }
-    const updatedProject = await Project.findById(id)
-
-    res.status(200).json(updatedProject)
+    else {
+      const updatedProject = await Project.findById(id)
+      res.status(200).json(updatedProject)
+    }
   } catch (error: any) {
     console.log(error.message)
     res.status(500).json({message : error.message})
@@ -65,7 +66,10 @@ app.delete("/project/:id", async (req: any, res: any) => {
     if (!project) {
       res.status(404).json({message: `Cannot find object with id ${id}`})
     }
-    res.status(200).json(project)
+    else {
+      res.status(200).json(project)
+    }
+      
   } catch (error: any) {
     console.log(error.message)
     res.status(500).json({message : error.message})

@@ -4,6 +4,16 @@ import { useState } from "react"
 
 async function deleteProjectByID(id : any) {
     const res = await fetch(`/project/${id}`, {method: 'DELETE'})
+    if (!res.ok) {
+        alert(`Error when deleting object with ID ${id}`)
+        if (res.status === 404) {
+            throw new Error("Item not found")
+        }
+        else {
+            res.text().then(text => {throw new Error(text)})
+        }
+        
+    }
     return res.json()
 }
 
@@ -14,7 +24,7 @@ function DeleteByID () {
     const [doDelete, setDoDelete] = useState(false)
 
     const {mutateAsync : deleteProject  } = useMutation({
-       mutationFn : deleteProjectByID
+       mutationFn : deleteProjectByID   
     });
 
     return (
@@ -31,6 +41,7 @@ function DeleteByID () {
 
         
         <Button variant="contained" onClick={async () => {
+            setDoDelete(false)
             try {
                 await deleteProject(deleteID)
                 setDoDelete(true)

@@ -26,6 +26,9 @@ function FetchByID () {
 
     const executeFetch = () => {
             refetch()
+            if (!isError) {
+                setDoFetch(true)
+            }
     }
 
     return (
@@ -49,7 +52,7 @@ function FetchByID () {
         {doFetch ?
         <div style={{marginTop: "25px", marginBottom: "25px"}}>
             <Grid container spacing={2}>
-                <Grid xs={12} sm={6} md={6} lg={3}>
+                <Grid>
                     <Paper elevation={6}>
                         <Typography variant='h6' textAlign={"center"}>
                             {project?.title}
